@@ -3,6 +3,8 @@ const slash = require(`slash`);
 const queries = require('./gatsby-queries.js')
 const createPaginatedPages = require('gatsby-paginate')
 
+
+
 exports.createPages = ({ graphql, actions }) => {
     const { createPage } = actions;
 

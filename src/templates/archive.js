@@ -1,6 +1,5 @@
 import React from 'react'
 import Link from 'gatsby-link'
-import Img from "gatsby-image"
 
 import Layout from '../components/layout'
 
@@ -23,9 +22,9 @@ const IndexPage = ({ pageContext }) => {
       
       {group.map(({ node }) => (
          <li key={node.slug}>
-            {node.featured_media && node.featured_media.localFile.childImageSharp.resolutions &&
-              <Img resolutions={node.featured_media.localFile.childImageSharp.resolutions} />
-            }
+            {/*node.featured_media && node.featured_media.localFile && node.featured_media.localFile.childImageSharp.resize &&
+              <img src={node.featured_media.localFile.childImageSharp.resize.src} alt=""/>
+            */}
             <Link to={`post/${node.slug}`} className="posts__item">
                <div dangerouslySetInnerHTML={{ __html: node.title }} />
             </Link>

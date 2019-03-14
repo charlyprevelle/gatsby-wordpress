@@ -1,14 +1,14 @@
 import React, { Component } from "react"
 import { graphql } from 'gatsby'
-import Img from "gatsby-image"
 
 import Layout from '../components/layout'
 
 class PostTemplate extends Component { 
    render() {
+
       const post = this.props.data.wordpressPost
-      const resolutions = post.featured_media ? post.featured_media.localFile.childImageSharp.resolutions : null
-      
+      // const resolutions = post.featured_media.localFile.childImageSharp.resize
+
       /**
        * https://github.com/gatsbyjs/gatsby/tree/master/packages/gatsby-source-wordpress
        * CTRL + F // Check for "flexible content" for more complicated queries
@@ -28,11 +28,11 @@ class PostTemplate extends Component {
 
       return ( 
          <Layout>
-            {resolutions &&
+            {/*post.featured_media && resolutions &&
                <div>
-                  <Img resolutions={resolutions} />
+                  <img src={resolutions.src} alt="" />
                </div>
-            }
+            */}
 
             <h1 dangerouslySetInnerHTML={{ __html: post.title }}></h1>
             <div dangerouslySetInnerHTML={{ __html: post.content }} />
@@ -72,17 +72,15 @@ export const PostQuery = graphql`
             facebook
             twitter
          }
-         featured_media{
-            localFile{
-               childImageSharp{
-                  resolutions(width:300, height:300){
-                     src
-                     width
-                     height
-                  }
-               }
-            }
-         }
+         # featured_media{
+         #    localFile{
+         #       childImageSharp{
+         #          resize(width:600, height:300){
+         #             src
+         #          }
+         #       }
+         #    }
+         # }
       }
 
       site{
